@@ -1,5 +1,12 @@
 MariaDb UDF for xxhash64, xxhash32 and xxhash32-signed
 ======================================================
+This is a set of 3 UDFs that can be installed in MariaDB.
+
+  - `xxhash64('string')` -> returns signed 64bit int (UDF can return only signed `long long`)
+  - `xxhash32('string')` -> returns unsigned 32bit int
+  - `xxhash32s('string')` -> returns signed 32bit int
+
+My main use-case for these is to produce `integer primary key` from long `string`.
 
 Dependencies
 ------------
