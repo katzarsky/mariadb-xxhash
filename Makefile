@@ -15,20 +15,20 @@ OUTPUT := mariadb-xxhash.so
 .DEFAULT_GOAL := $(OUTPUT)
 
 LIB := $(OUTPUT)
-TARGETDIR := $(DESTDIR)/usr/lib/mysql/plugin
+TARGETDIR := /usr/lib/mysql/plugin
 
 # Target to build the UDF
 all: $(OUTPUT)
 
 $(OUTPUT): $(SOURCE)
-        $(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(LDFLAGS)
 
 install: $(OUTPUT)
-        mkdir -p $(TARGETDIR)
-        install -m644 $(LIB) $(TARGETDIR)
+	mkdir -p $(TARGETDIR)
+	install -m644 $(LIB) $(TARGETDIR)
 
 # Target to clean up generated files
 clean:
-        rm -f $(OUTPUT)
+	rm -f $(OUTPUT)
 
 .PHONY: all clean
