@@ -42,7 +42,7 @@ You can install the UDFs in a particular database or for the whole server.
 Testing in MariaDB
 ---------------------
 
-`
+```
   MariaDB> SELECT xxhash32('');
   +--------------+
   | xxhash32('') |
@@ -50,5 +50,5 @@ Testing in MariaDB
   |     46947589 |
   +--------------+
   1 row in set (0.000 sec)
-`
+```
 
