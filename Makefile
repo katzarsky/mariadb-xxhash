@@ -2,9 +2,9 @@
 
 # Compiler and compiler flags
 CC := gcc
-CFLAGS := -Wall -O3 -shared -fPIC 
-INCLUDES := `mysql_config --cflags` `mysql_config --libs` -I /usr/include/xxhash.h 
-LDFLAGS := /usr/lib/x86_64-linux-gnu/libxxhash.a
+CFLAGS := -Wall -O3 -shared -fPIC
+INCLUDES := `mysql_config --cflags` `mysql_config --libs`
+LDFLAGS := -l:libxxhash.a
 
 # UDF source file
 SOURCE := mariadb-xxhash.cc
@@ -21,14 +21,14 @@ TARGETDIR := $(DESTDIR)/usr/lib/mysql/plugin
 all: $(OUTPUT)
 
 $(OUTPUT): $(SOURCE)
-	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(LDFLAGS)
+        $(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(LDFLAGS)
 
 install: $(OUTPUT)
-	mkdir -p $(TARGETDIR)
-	install -m644 $(LIB) $(TARGETDIR)
+        mkdir -p $(TARGETDIR)
+        install -m644 $(LIB) $(TARGETDIR)
 
 # Target to clean up generated files
 clean:
-	rm -f $(OUTPUT)
+        rm -f $(OUTPUT)
 
 .PHONY: all clean
