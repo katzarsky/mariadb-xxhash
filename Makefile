@@ -2,7 +2,7 @@
 
 # Compiler and compiler flags
 CC := gcc
-CFLAGS := -Wall -O3 -shared -fPIC
+CFLAGS := -Wall -O3 -shared -fPIC -Wl,--exclude-libs,ALL
 INCLUDES := `mysql_config --cflags` `mysql_config --libs`
 LDFLAGS := -l:libxxhash.a
 
